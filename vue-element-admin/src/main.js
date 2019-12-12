@@ -1,3 +1,5 @@
+import { apolloProvider } from './apollo'
+
 import Vue from 'vue'
 
 import Cookies from 'js-cookie'
@@ -47,5 +49,6 @@ new Vue({
   el: '#app',
   router,
   store,
+  apolloProvider,
   render: h => h(App)
 })
