@@ -1,0 +1,23 @@
+version: '3.1'
+
+networks:
+  default:
+    external:
+      name: docker_hank-net
+
+services:
+  dashboard:
+    build:
+        context: ..
+        dockerfile: docker/dockerfile.js
+    image: node:13
+    container_name: dashboard
+    privileged: true
+    ports:
+      - 8080:9527
+    working_dir: /app
+    volumes:
+      - ../vue-element-admin/:/app/
+    command: >
+      bash -c
+      "npm rebuild node-sass --force && npm install && npm run dev"
