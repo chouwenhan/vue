@@ -2,15 +2,15 @@
   <div class="modify-artilce-container">
     <el-form label-position="left" size="small" label-width="90px" style="width: 90%; margin-left:10px; margin-right:10px;">
       <el-form-item label="文章標頭">
-        <el-input v-model="article.title"/>
+        <el-input v-model="article.title" />
       </el-form-item>
       <el-form-item label="文章標籤">
-        <el-input v-model="article.tags"/>
+        <el-input v-model="article.tags" />
       </el-form-item>
       <el-form-item label="文章內容">
-        <el-input v-model="article.content" :rows="20" type="textarea"/>
+        <el-input v-model="article.content" :rows="20" type="textarea" />
       </el-form-item>
-      <el-form-item label="上傳圖片" >
+      <el-form-item label="上傳圖片">
         <el-upload :on-change="fileChange" :auto-upload="false" action="" multiple>
           <el-button size="small" type="primary">上傳檔案</el-button>
         </el-upload>
@@ -19,7 +19,7 @@
         <el-button style="float: right;" @click="onCancel">取消</el-button>
         <el-button style="float: right;" type="primary" @click="onSubmit">修改文章</el-button>
       </el-form-item>
-      <el-form-item label="圖片" >
+      <el-form-item label="圖片">
         <!--eslint-disable-next-line-->
         <img v-for="image in article.images" :src="image" style="display:block; padding-top:20px; width:50%; heigh:50%" >
       </el-form-item>
@@ -70,7 +70,7 @@ export default {
       this.article.content = data.article.content
       if (data.article._attachments) {
         for (var index in data.article._attachments) {
-          const uploadUrl = 'http://10.36.162.232:5984' + '/article/' + this.$route.params.id + '/' + index
+          const uploadUrl = 'http://52.198.225.158:5984' + '/article/' + this.$route.params.id + '/' + index
           this.article.images.push(uploadUrl)
         }
       }

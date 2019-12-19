@@ -10,7 +10,7 @@
       <el-form-item label="文章內容">
         <el-form-item style="white-space: pre-wrap;">{{ article.content }}</el-form-item>
       </el-form-item>
-      <el-form-item label="圖片" >
+      <el-form-item label="圖片">
         <!--eslint-disable-next-line-->
         <img v-for="image in article.images" :src="image" style="display:block; padding-top:20px; width:60%; heigh:60%" >
       </el-form-item>
@@ -60,7 +60,7 @@ export default {
       this.article.content = data.article.content
       if (data.article._attachments) {
         for (var index in data.article._attachments) {
-          const uploadUrl = 'http://10.36.162.232:5984' + '/article/' + this.$route.params.id + '/' + index
+          const uploadUrl = 'http://52.198.225.158:5984' + '/article/' + this.$route.params.id + '/' + index
           this.article.images.push(uploadUrl)
         }
       }

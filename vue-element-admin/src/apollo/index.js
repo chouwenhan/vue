@@ -4,7 +4,7 @@ import { InMemoryCache } from 'apollo-cache-inmemory'
 import VueApollo from 'vue-apollo'
 import Vue from 'vue'
 
-export const url = 'http://10.36.162.232:3001/graphql/article'
+export const url = 'http://52.198.225.158:3001/graphql/article'
 
 const httpLink = new HttpLink({
   // 你需要在这里使用绝对路径

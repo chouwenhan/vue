@@ -2,15 +2,15 @@
   <div class="create-artilce-container">
     <el-form label-position="left" size="small" label-width="90px" style="width: 90%; margin-left:10px; margin-right:10px;">
       <el-form-item label="文章標頭">
-        <el-input v-model="article.title"/>
+        <el-input v-model="article.title" />
       </el-form-item>
       <el-form-item label="文章標籤">
-        <el-input v-model="article.tags"/>
+        <el-input v-model="article.tags" />
       </el-form-item>
       <el-form-item label="文章內容">
         <el-input v-model="article.content" :autosize="{ minRows: 10}" type="textarea" />
       </el-form-item>
-      <el-form-item label="上傳圖片" >
+      <el-form-item label="上傳圖片">
         <el-upload :on-change="fileChange" :auto-upload="false" action="" multiple>
           <el-button size="small" type="primary">上傳檔案</el-button>
         </el-upload>

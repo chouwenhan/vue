@@ -1,22 +1,22 @@
 <template>
   <div class="artilce-list-container">
-    <el-table :data="tableData" :default-sort ="{prop:'date',order:'descending'}" style="width: 90%; margin-left:10px; margin-right:10px;">
-      <el-table-column prop="title" label="標題" sortable min-width= "15%">
+    <el-table :data="tableData" :default-sort="{prop:'date',order:'descending'}" style="width: 90%; margin-left:10px; margin-right:10px;">
+      <el-table-column prop="title" label="標題" sortable min-width="15%">
         <template slot-scope="scope">
           <el-button type="text" size="small" @click="handleLink(scope.row)"> {{ scope.row.title }} </el-button>
         </template>
       </el-table-column>
-      <el-table-column prop="tags" label="標籤" sortable min-width= "10%"/>
-      <el-table-column :show-overflow-tooltip="true" prop="content" label="內容" sortable min-width= "20%"/>
-      <el-table-column prop="date" label="日期" sortable min-width= "20%"/>
-      <el-table-column label="修改" min-width= "10%">
+      <el-table-column prop="tags" label="標籤" sortable min-width="10%" />
+      <el-table-column :show-overflow-tooltip="true" prop="content" label="內容" sortable min-width="20%" />
+      <el-table-column prop="date" label="日期" sortable min-width="20%" />
+      <el-table-column label="修改" min-width="10%">
         <template slot-scope="scope">
-          <i class="el-icon-edit" @click="modifyLink(scope.row)"/>
+          <i class="el-icon-edit" @click="modifyLink(scope.row)" />
         </template>
       </el-table-column>
-      <el-table-column label="刪除" min-width= "10%">
+      <el-table-column label="刪除" min-width="10%">
         <template slot-scope="scope">
-          <i class="el-icon-delete" @click="deleteLink(scope.row)"/>
+          <i class="el-icon-delete" @click="deleteLink(scope.row)" />
         </template>
       </el-table-column>
     </el-table>
