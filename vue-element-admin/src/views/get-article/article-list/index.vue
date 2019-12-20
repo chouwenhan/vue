@@ -10,18 +10,14 @@
       <el-table-column :show-overflow-tooltip="true" prop="content" label="內容" sortable min-width="20%" />
       <el-table-column prop="date" label="日期" sortable min-width="20%" />
       <el-table-column label="修改" min-width="10%">
-        <el-tag v-permission="['admin']">
-          <template slot-scope="scope">
-            <i class="el-icon-edit" @click="modifyLink(scope.row)" />
-          </template>
-        </el-tag>
+        <template slot-scope="scope">
+          <i v-if="checkPermission(['admin'])" class="el-icon-edit" @click="modifyLink(scope.row)" />
+        </template>
       </el-table-column>
       <el-table-column label="刪除" min-width="10%">
-        <el-tag v-permission="['admin']">
-          <template slot-scope="scope">
-            <i class="el-icon-delete" @click="deleteLink(scope.row)" />
-          </template>
-        </el-tag>
+        <template slot-scope="scope">
+          <i v-if="checkPermission(['admin'])" class="el-icon-delete" @click="deleteLink(scope.row)" />
+        </template>
       </el-table-column>
     </el-table>
   </div>
@@ -29,6 +25,7 @@
 
 <script>
 import gql from 'graphql-tag'
+import checkPermission from '@/utils/permission' // 权限判断函数
 
 export default {
   data() {
@@ -57,6 +54,7 @@ export default {
     })
   },
   methods: {
+    checkPermission,
     handleLink(row) {
       this.$router.push({ path: '/article/' + row._id })
     },
