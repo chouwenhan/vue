@@ -10,14 +10,18 @@
       <el-table-column :show-overflow-tooltip="true" prop="content" label="內容" sortable min-width="20%" />
       <el-table-column prop="date" label="日期" sortable min-width="20%" />
       <el-table-column label="修改" min-width="10%">
-        <template slot-scope="scope">
-          <i class="el-icon-edit" @click="modifyLink(scope.row)" />
-        </template>
+        <el-tag v-permission="['admin']">
+          <template slot-scope="scope">
+            <i class="el-icon-edit" @click="modifyLink(scope.row)" />
+          </template>
+        </el-tag>
       </el-table-column>
       <el-table-column label="刪除" min-width="10%">
-        <template slot-scope="scope">
-          <i class="el-icon-delete" @click="deleteLink(scope.row)" />
-        </template>
+        <el-tag v-permission="['admin']">
+          <template slot-scope="scope">
+            <i class="el-icon-delete" @click="deleteLink(scope.row)" />
+          </template>
+        </el-tag>
       </el-table-column>
     </el-table>
   </div>
@@ -60,23 +64,24 @@ export default {
       this.$router.push({ path: '/modify-article/' + row._id })
     },
     deleteLink(row) {
-      confirm('確定要刪除 ' + row._id + ' 文章?')
-      this.$apollo.provider.defaultClient.mutate({
-        mutation: gql`mutation ($_id: String!) {
+      if (confirm('確定要刪除 ' + row._id + ' 文章?') === true) {
+        this.$apollo.provider.defaultClient.mutate({
+          mutation: gql`mutation ($_id: String!) {
           deleteArticle(_id: $_id) {
             message
           }
         }`,
-        // 参数
-        variables: {
-          _id: row._id
-        }
-      }).then(data => {
-        alert('刪除文章成功')
-        window.location.reload()
-      }).catch(() => {
-        alert('刪除文章失敗')
-      })
+          // 参数
+          variables: {
+            _id: row._id
+          }
+        }).then(data => {
+          alert('刪除文章成功')
+          window.location.reload()
+        }).catch(() => {
+          alert('刪除文章失敗')
+        })
+      }
     }
   }
 }
